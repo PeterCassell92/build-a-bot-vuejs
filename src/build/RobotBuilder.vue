@@ -94,7 +94,7 @@ export default {
   computed:
   {
     availableParts() {
-      return this.$store.state.parts;
+      return this.$store.state.robots.parts;
     },
     saleBorderClass() {
       return this.selectedRobot.head.onSale ? 'sale-border' : '';
@@ -117,7 +117,7 @@ export default {
       // ensuring that we don't simply point to the same object
       // we can use assign or spread operator.
       this.$store.dispatch('addRobotToCart', { ...robot, cost })
-        .then(this.$router.push('/cart'));
+        .then(() => this.$router.push('/cart'));
       this.addedToCart = true;
     },
   },
